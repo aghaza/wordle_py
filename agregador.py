@@ -3,6 +3,9 @@
     reconstruirla mediante generador.py y si no se encontrara este generará un conjunto de palabras
     vacío que podrá ser llenado con este mismo agregador.
     
+    Además de modificar <bolsa.pkl> generará una versión <words.js> mediante el conversor <bolsaPKL_to_wordsJS.py>
+    para utilizar en la versión web.
+    
     En el caso de agregarse palabras nuevas generará un archivo de registro llamado nuevas.log
     cuyo contenido será una lista [palabra_nueva1, palabra_nueva2, ... ,palabra_nuevaN]
 
@@ -81,8 +84,13 @@ else:
     elim = []
 
 def guardar():
+    global bolsa
     with open('bolsa.pkl', 'wb') as archivo:
-    	pickle.dump(bolsa, archivo)
+        pickle.dump(bolsa, archivo)
+    if path.exists("bolsaPKL_to_wordsJS.py"):
+        subprocess.run(['python3', 'bolsaPKL_to_wordsJS.py'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    else:
+        print(f"{rojo}No se ha podido generar <words.js> porque no se ha encontrado el conversor {bold}<bolsaPKL_to_wordsJS.py>.{reset}")
 
 def nuevas_log():
 	destino = open('nuevas.log', 'w')
@@ -99,12 +107,20 @@ def salida():
         print(f'\nSe han agregado las siguientes palabras nuevas ({verde}{nuevas}{reset}):')
         print(nuev)
         nuevas_log()
-    if eliminadas> 0:
+        
+    if eliminadas > 0:
         print(f'\nSe han eliminado las siguientes palabras de la base ({rojo}{eliminadas}{reset}):')
         print(elim)
         elim_log()
+        
     print(f'\n{azul_brillante}Cantidad de palabras actual:{reset}', len(bolsa), f'{azul_brillante}palabras.{reset}\n')
-
+    
+    if path.exists("bolsaPKL_to_wordsJS.py"):
+        print(f"{verde}Se ha generado {bold}<words.js>{reset}{verde} correctamente.{reset}\n")
+        subprocess.run(['python3', 'bolsaPKL_to_wordsJS.py'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    else:
+        print(f"{rojo}No se ha podido generar <words.js> porque no se ha encontrado el conversor {bold}<bolsaPKL_to_wordsJS.py>.{reset}\n")
+	
 if path.exists('bolsa.pkl'):
     # Recuperación del archivo bolsa de palabras
     with open('bolsa.pkl', 'rb') as archivo:
