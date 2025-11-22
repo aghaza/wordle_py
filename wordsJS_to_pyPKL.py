@@ -54,13 +54,5 @@ else:
 	print("No se encuentra el archvo <words.js>")
 	sys.exit()
 
-print(bolsa)
-print(type(bolsa))
-print(len(bolsa))
-
-
 with open('bolsa.pkl', 'wb') as archivo:
 	pickle.dump(bolsa, archivo)
-    
-    
-
