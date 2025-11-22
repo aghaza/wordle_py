@@ -19,6 +19,7 @@
         main.py         		- programa principal
         generador.py    		- genera la base de palabras bolsa.pkl a partir de un archivo a elegir que contenga las palabras
         agregador.py    		- gestor del archivo bolsa.pkl que permite agregar, eliminar, contabilizar y listar las palabras
+        sugerencias.py			- receptor de sugerencias de palabras
         conversor.py    		- convierte bolsa.pkl a bolsa_set.py cuyo contenido es bolsa = {aquí dentro un set con las palabras}
         list2bin.py				- proceso iverso a conversor.py
         wordsJS_to_pyPKL.py		- igual a list2bin.py pero a partir de words.js
