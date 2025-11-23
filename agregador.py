@@ -1,5 +1,5 @@
 ''' Programa para agregar, eliminar, contabilizar y listar las palabras de la base de datos para el juego WORDLE.
-    Buscará la base de palabras en el binario "bolsa.pkl", en caso de no encontrarla intentará 
+    Buscará la base de palabras en "words.js" o en el binario "bolsa.pkl", en caso de no encontrarla intentará 
     reconstruirla mediante generador.py y si no se encontrara este generará un conjunto de palabras
     vacío que podrá ser llenado con este mismo agregador.
     
@@ -63,6 +63,27 @@ rojo  = "\033[31m"
 naranja = "\033[38;5;214m"
 cyan = "\033[36m"          # Cyan
 azul_brillante = "\033[94m"
+
+def js2bin():
+		
+	if path.exists('words.js'):
+		with open('words.js', 'r') as file:
+			print(f"Archivo {bold}{verde}<words.js>{reset} encontrado.\nSe usará como base y se generará {bold}{verde}<bolsa.pkl>{reset} a partir del mismo.\n")
+			for line in file:
+				if line.startswith("const WORDS = "):
+					# Extraer el contenido de const WORDS = []
+					bolsa_content = line.split("= ", 1)[1].strip().rstrip(';')  # Eliminar el punto y coma
+					# Evaluar la expresión
+					bolsa = set(ast.literal_eval(bolsa_content.strip('[]')))
+	else:
+		print(f"No se encuentra el archvo {bold}{verde}<words.js>{reset}.\nSe usará {bold}{verde}<bolsa.pkl>{reset} como base.\n")
+		return None
+
+	with open('bolsa.pkl', 'wb') as archivo:
+		pickle.dump(bolsa, archivo)
+
+print(f"Verificando existencia de {bold}<words.js>{reset}...")
+js2bin()
 
 nuevas = 0
 eliminadas = 0
