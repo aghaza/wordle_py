@@ -129,20 +129,20 @@ class Jugador:
         total_bolsa = len(self.bolsa)
 
         if total_bolsa == 0 and total_erradas == 0:
-            return 5
+            return 4
 
         porcentaje_acertadas = (total_acertadas / (total_bolsa + total_erradas)) * 100
 
         if porcentaje_acertadas >= 80:
-            return 5
-        elif porcentaje_acertadas >= 60:
             return 4
-        elif porcentaje_acertadas >= 40:
+        elif porcentaje_acertadas >= 60:
             return 3
-        elif porcentaje_acertadas >= 20:
+        elif porcentaje_acertadas >= 40:
             return 2
-        else:
+        elif porcentaje_acertadas >= 20:
             return 1
+        else:
+            return 0
 
 def login():
     while True:
