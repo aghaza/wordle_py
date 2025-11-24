@@ -209,14 +209,27 @@ def ingreso():
 
 def intento(intentada, palabra_secreta):
     resultado = []
+    correctas = []
     for i, letra in enumerate(intentada):
         if letra == palabra_secreta[i]:
-            resultado.append('🟢')  # Correcto
-        elif letra in palabra_secreta:
-            resultado.append('🟡')  # En la palabra pero en posición incorrecta
+            resultado.append('🟢')
+            correctas.append(letra)
+        elif letra in palabra_secreta and letra not in correctas:
+            resultado.append('?')
         else:
-            resultado.append('🔴')  # Incorrecto
-    return resultado  # Devuelve la lista en lugar de la cadena
+            resultado.append('🔴')
+    for i, letra in enumerate(intentada):
+    	if resultado [i] == '?' and letra in correctas:
+    		resultado [i] = '🔴'
+    	elif resultado [i] == '🟢':
+    		None
+    	elif resultado [i] == '🔴':
+    			None    			
+    	else:
+    		resultado [i] = '🟡'
+    #print (resultado)
+    #print (correctas)
+    return resultado
 
 # Límite de intentos
 limite_intentos = 6 - jugador.nivel
