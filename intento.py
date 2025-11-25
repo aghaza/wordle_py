@@ -1,4 +1,6 @@
-''' Extracto de código del módulo principal main.py para análisis denla función intento() 
+''' Extracto de código del módulo principal main.py para análisis denla función intento(). 
+Se modificaron las partes que incluyen al usuario y manejo de palabras en bolsa. Aquí solamente se usa una palabra para analizar el código de la función. 
+
     Requiere python3
 '''
 
