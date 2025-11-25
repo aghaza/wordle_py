@@ -43,9 +43,7 @@ if path.exists('bolsa_set.py'):
     with open('bolsa_set.py', 'r') as file:
         for line in file:
             if line.startswith("bolsa = "):
-                # Extraer el contenido del set
                 bolsa_content = line.split("= ", 1)[1].strip()
-                # Evaluar la expresión y eliminar llaves
                 bolsa = set(ast.literal_eval(bolsa_content.strip('{}')))
 else:
 	print("No se encuentra el archvo <bolsa_set.py>")
