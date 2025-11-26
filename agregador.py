@@ -15,10 +15,10 @@
     En cualquiera de estos casos (tanto se agreguen o se quiten palabras) si ya existieran registros previos
     de los archivos .log su contenido se incrementará con los nuevos registros.
 
-    Creado por George Aghazarian - aghazarian@pm.me
-    Última versión: 21 de noviembre de 2025 - 18:28
-
     Este programa es un accesorio complementario.
+
+    Creado por George Aghazarian - aghazarian@pm.me
+    Última versión: 25 de noviembre de 2025 - 21:00
 
     Archivos imprescindibles con al menos un jugador registrado (no se permitirán nuevos registros):
         main.py
@@ -32,6 +32,7 @@
         main.py         		- programa principal
         generador.py    		- genera la base de palabras bolsa.pkl a partir de un archivo a elegir que contenga las palabras
         agregador.py    		- gestor del archivo bolsa.pkl que permite agregar, eliminar, contabilizar y listar las palabras
+        agregador_web.py        - igual a agregador.py pero con gestión en GitHub.
         sugerencias.py			- receptor de sugerencias de palabras
         conversor.py    		- convierte bolsa.pkl a bolsa_set.py cuyo contenido es bolsa = {aquí dentro un set con las palabras}
         list2bin.py				- proceso iverso a conversor.py
