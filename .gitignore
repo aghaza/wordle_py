@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Bolsa y datos derivados/personales (regenerables, no versionar)
+*.pkl
+*.log
